@@ -161,6 +161,7 @@ func (fs *Service) ReduceFn(stream functionpb.UserDefinedFunction_ReduceFnServer
 
 	var (
 		datumList []*functionpb.Datum
+		mu        sync.Mutex
 		wg        sync.WaitGroup
 	)
 
@@ -187,6 +188,8 @@ func (fs *Service) ReduceFn(stream functionpb.UserDefinedFunction_ReduceFnServer
 			go func() {
 				defer wg.Done()
 				messages := fs.Reducer.HandleDo(ctx, key, chanMap[key], md)
+				mu.Lock()
+				defer mu.Unlock()
 				for _, msg := range messages {
 					datumList = append(datumList, &functionpb.Datum{
 						Key:   msg.Key,
