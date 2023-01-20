@@ -1,4 +1,4 @@
-module github.com/numaproj/numaflow-go
+module github.com/ashwinidulams/numaflow-go
 
 go 1.19
 
