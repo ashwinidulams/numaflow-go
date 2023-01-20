@@ -118,13 +118,13 @@ func (fs *Service) MapFn(ctx context.Context, d *functionpb.Datum) (*functionpb.
 // ReduceFn applies a reduce function to a datum stream.
 func (fs *Service) ReduceFn(stream functionpb.UserDefinedFunction_ReduceFnServer) error {
 	var (
-		key       string
 		md        Metadata
 		err       error
 		startTime int64
 		endTime   int64
 		ctx       = stream.Context()
 		chanMap   = make(map[string]chan Datum)
+		mu        sync.RWMutex
 	)
 
 	grpcMD, ok := grpcmd.FromIncomingContext(ctx)
@@ -161,7 +161,6 @@ func (fs *Service) ReduceFn(stream functionpb.UserDefinedFunction_ReduceFnServer
 
 	var (
 		datumList []*functionpb.Datum
-		mu        sync.Mutex
 		wg        sync.WaitGroup
 	)
 
@@ -182,12 +181,18 @@ func (fs *Service) ReduceFn(stream functionpb.UserDefinedFunction_ReduceFnServer
 			watermark: d.GetWatermark().Watermark.AsTime(),
 		}
 
-		if _, ok := chanMap[d.Key]; !ok {
-			chanMap[d.Key] = make(chan Datum)
+		mu.RLock()
+		ch, chok := chanMap[d.Key]
+		mu.RUnlock()
+		if !chok {
+			ch = make(chan Datum)
+			mu.Lock()
+			chanMap[d.Key] = ch
+			mu.Unlock()
 			wg.Add(1)
-			go func() {
+			go func(key string, ch chan Datum) {
 				defer wg.Done()
-				messages := fs.Reducer.HandleDo(ctx, key, chanMap[key], md)
+				messages := fs.Reducer.HandleDo(ctx, key, ch, md)
 				mu.Lock()
 				defer mu.Unlock()
 				for _, msg := range messages {
@@ -196,9 +201,9 @@ func (fs *Service) ReduceFn(stream functionpb.UserDefinedFunction_ReduceFnServer
 						Value: msg.Value,
 					})
 				}
-			}()
+			}(d.Key, ch)
 		}
-		chanMap[d.Key] <- hd
+		ch <- hd
 	}
 
 	wg.Wait()
