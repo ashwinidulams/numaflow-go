@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	functionpb "github.com/numaproj/numaflow-go/pkg/apis/proto/function/v1"
+	functionpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/function/v1"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 

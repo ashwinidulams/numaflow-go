@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	sinkpb "github.com/numaproj/numaflow-go/pkg/apis/proto/sink/v1"
+	sinkpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/sink/v1"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 

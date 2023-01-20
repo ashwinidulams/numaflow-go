@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	sinkpb "github.com/numaproj/numaflow-go/pkg/apis/proto/sink/v1"
-	sinksdk "github.com/numaproj/numaflow-go/pkg/sink"
+	sinkpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/sink/v1"
+	sinksdk "github.com/ashwinidulams/numaflow-go/pkg/sink"
 	"google.golang.org/grpc"
 )
 
@@ -26,18 +26,19 @@ func New() *server {
 
 // RegisterSinker registers the sink operation handler to the server.
 // Example:
-// func handle(ctx context.Context, datumStreamCh <-chan sinksdk.Datum) sinksdk.Responses {
-// 	result := sinksdk.ResponsesBuilder()
-// 	for _, datum := range datumList {
-// 		fmt.Println(string(datum.Value()))
-// 		result = result.Append(sinksdk.ResponseOK(datum.ID()))
-// 	}
-// 	return result
-// }
 //
-// func main() {
-// 	server.New().RegisterSinker(sinksdk.SinkFunc(handle)).Start(context.Background())
-// }
+//	func handle(ctx context.Context, datumStreamCh <-chan sinksdk.Datum) sinksdk.Responses {
+//		result := sinksdk.ResponsesBuilder()
+//		for _, datum := range datumList {
+//			fmt.Println(string(datum.Value()))
+//			result = result.Append(sinksdk.ResponseOK(datum.ID()))
+//		}
+//		return result
+//	}
+//
+//	func main() {
+//		server.New().RegisterSinker(sinksdk.SinkFunc(handle)).Start(context.Background())
+//	}
 func (s *server) RegisterSinker(h sinksdk.SinkHandler) *server {
 	s.svc.Sinker = h
 	return s

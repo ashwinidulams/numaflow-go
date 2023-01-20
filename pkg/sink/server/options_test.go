@@ -3,7 +3,7 @@ package server
 import (
 	"testing"
 
-	"github.com/numaproj/numaflow-go/pkg/sink"
+	"github.com/ashwinidulams/numaflow-go/pkg/sink"
 	"github.com/stretchr/testify/assert"
 )
 

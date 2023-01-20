@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	sinkpb "github.com/numaproj/numaflow-go/pkg/apis/proto/sink/v1"
-	sinksdk "github.com/numaproj/numaflow-go/pkg/sink"
-	"github.com/numaproj/numaflow-go/pkg/sink/client"
+	sinkpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/sink/v1"
+	sinksdk "github.com/ashwinidulams/numaflow-go/pkg/sink"
+	"github.com/ashwinidulams/numaflow-go/pkg/sink/client"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )

@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	functionpb "github.com/numaproj/numaflow-go/pkg/apis/proto/function/v1"
-	"github.com/numaproj/numaflow-go/pkg/apis/proto/function/v1/funcmock"
+	functionpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/function/v1"
+	"github.com/ashwinidulams/numaflow-go/pkg/apis/proto/function/v1/funcmock"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 

@@ -4,8 +4,8 @@ import (
 	"context"
 	"strconv"
 
-	functionsdk "github.com/numaproj/numaflow-go/pkg/function"
-	"github.com/numaproj/numaflow-go/pkg/function/server"
+	functionsdk "github.com/ashwinidulams/numaflow-go/pkg/function"
+	"github.com/ashwinidulams/numaflow-go/pkg/function/server"
 )
 
 func handle(_ context.Context, key string, d functionsdk.Datum) functionsdk.Messages {

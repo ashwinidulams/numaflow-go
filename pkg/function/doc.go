@@ -8,8 +8,8 @@
 
     "context"
 
-    functionsdk "github.com/numaproj/numaflow-go/pkg/function"
-    "github.com/numaproj/numaflow-go/pkg/function/server"
+    functionsdk "github.com/ashwinidulams/numaflow-go/pkg/function"
+    "github.com/ashwinidulams/numaflow-go/pkg/function/server"
 
   )
 
@@ -33,8 +33,8 @@
     "context"
     "strconv"
 
-    functionsdk "github.com/numaproj/numaflow-go/pkg/function"
-    "github.com/numaproj/numaflow-go/pkg/function/server"
+    functionsdk "github.com/ashwinidulams/numaflow-go/pkg/function"
+    "github.com/ashwinidulams/numaflow-go/pkg/function/server"
   )
 
   // Count the incoming events

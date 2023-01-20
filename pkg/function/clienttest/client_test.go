@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
+	functionpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/function/v1"
+	"github.com/ashwinidulams/numaflow-go/pkg/apis/proto/function/v1/funcmock"
 	"github.com/golang/mock/gomock"
-	functionpb "github.com/numaproj/numaflow-go/pkg/apis/proto/function/v1"
-	"github.com/numaproj/numaflow-go/pkg/apis/proto/function/v1/funcmock"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/emptypb"

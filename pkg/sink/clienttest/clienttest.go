@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	sinkpb "github.com/numaproj/numaflow-go/pkg/apis/proto/sink/v1"
-	"github.com/numaproj/numaflow-go/pkg/apis/proto/sink/v1/sinkmock"
-	"github.com/numaproj/numaflow-go/pkg/sink"
+	sinkpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/sink/v1"
+	"github.com/ashwinidulams/numaflow-go/pkg/apis/proto/sink/v1/sinkmock"
+	"github.com/ashwinidulams/numaflow-go/pkg/sink"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 

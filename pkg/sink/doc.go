@@ -9,8 +9,8 @@
     "context"
     "fmt"
 
-    sinksdk "github.com/numaproj/numaflow-go/pkg/sink"
-    "github.com/numaproj/numaflow-go/pkg/sink/server"
+    sinksdk "github.com/ashwinidulams/numaflow-go/pkg/sink"
+    "github.com/ashwinidulams/numaflow-go/pkg/sink/server"
 
   )
 

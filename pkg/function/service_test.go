@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	functionpb "github.com/numaproj/numaflow-go/pkg/apis/proto/function/v1"
+	functionpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/function/v1"
 	grpcmd "google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/timestamppb"

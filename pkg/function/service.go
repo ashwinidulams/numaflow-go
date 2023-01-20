@@ -11,7 +11,7 @@ import (
 	grpcmd "google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/types/known/emptypb"
 
-	functionpb "github.com/numaproj/numaflow-go/pkg/apis/proto/function/v1"
+	functionpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/function/v1"
 )
 
 // handlerDatum implements the Datum interface and is used in the map and reduce handlers.

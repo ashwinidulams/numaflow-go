@@ -12,9 +12,9 @@ import (
 	grpcmd "google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	functionpb "github.com/numaproj/numaflow-go/pkg/apis/proto/function/v1"
-	functionsdk "github.com/numaproj/numaflow-go/pkg/function"
-	"github.com/numaproj/numaflow-go/pkg/function/client"
+	functionpb "github.com/ashwinidulams/numaflow-go/pkg/apis/proto/function/v1"
+	functionsdk "github.com/ashwinidulams/numaflow-go/pkg/function"
+	"github.com/ashwinidulams/numaflow-go/pkg/function/client"
 )
 
 func Test_server_map(t *testing.T) {
