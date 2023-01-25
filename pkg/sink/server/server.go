@@ -71,16 +71,16 @@ func (s *server) Start(ctx context.Context, inputOptions ...Option) {
 	if err != nil {
 		log.Fatalf("failed to execute net.Listen(%q, %q): %v", sinksdk.Protocol, sinksdk.Addr, err)
 	}
-	grpcSvr := grpc.NewServer(
+	grpcServer := grpc.NewServer(
 		grpc.MaxRecvMsgSize(opts.maxMessageSize),
 		grpc.MaxSendMsgSize(opts.maxMessageSize),
 	)
-	sinkpb.RegisterUserDefinedSinkServer(grpcSvr, s.svc)
+	sinkpb.RegisterUserDefinedSinkServer(grpcServer, s.svc)
 
 	// start the grpc server
 	go func() {
 		log.Println("starting the gRPC server with unix domain socket...")
-		err = grpcSvr.Serve(lis)
+		err = grpcServer.Serve(lis)
 		if err != nil {
 			log.Fatalf("failed to start the gRPC server: %v", err)
 		}
@@ -89,5 +89,5 @@ func (s *server) Start(ctx context.Context, inputOptions ...Option) {
 	<-ctxWithSignal.Done()
 	log.Println("Got a signal: terminating gRPC server...")
 	defer log.Println("Successfully stopped the gRPC server")
-	grpcSvr.GracefulStop()
+	grpcServer.GracefulStop()
 }
