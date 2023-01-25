@@ -181,14 +181,12 @@ func (fs *Service) ReduceFn(stream functionpb.UserDefinedFunction_ReduceFnServer
 			watermark: d.GetWatermark().Watermark.AsTime(),
 		}
 
-		mu.RLock()
 		ch, chok := chanMap[d.Key]
-		mu.RUnlock()
+
 		if !chok {
 			ch = make(chan Datum)
-			mu.Lock()
 			chanMap[d.Key] = ch
-			mu.Unlock()
+
 			wg.Add(1)
 			go func(key string, ch chan Datum) {
 				defer wg.Done()
@@ -203,6 +201,7 @@ func (fs *Service) ReduceFn(stream functionpb.UserDefinedFunction_ReduceFnServer
 				}
 			}(d.Key, ch)
 		}
+		
 		ch <- hd
 	}
 
